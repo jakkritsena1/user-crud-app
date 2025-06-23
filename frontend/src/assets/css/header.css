@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1140px;
+
+
+}
+
+.header-nav {
+    background-color: black;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: black;
+    border-color: rgb(255, 255, 255);
+}
+
+.ui-item {
+    display: flex;
+    gap: 2.5rem;
+}
+.ui-item li {
+    list-style: none;
+}
+
+a {
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    text-decoration: none;
+    font-family: 'Arial', sans-serif;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 640px) {}

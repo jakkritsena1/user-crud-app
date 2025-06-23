@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "ssl": {
+                    "rejectUnauthorized": true
+                }
+            },
+            "previewLimit": 50,
+            "server": "dpg-d1cgeq15pdvs73eqvlkg-a.singapore-postgres.render.com",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "user-crud-app",
+            "database": "user_crud_app",
+            "username": "localhost",
+            "password": "nsnmJSeBFSpznq4SN0YcBxKAI0ji9LkE"
+        }
+    ]
+}

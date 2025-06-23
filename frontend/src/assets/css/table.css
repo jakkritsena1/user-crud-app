@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+.table-content th,
+.table-content td {
+  padding: 10px;
+  text-align: center;
+}
+
+.table-content th {
+  background-color: #949393;
+  color: white;
+}
+
+.table-content tr.data td {
+  background-color: #ffffff;
+  border: 2px solid #000000; 
+}
+
+.table-content {
+  border-collapse: collapse;
+  width: 75%;
+  align-items: center;
+  margin: auto;
+  margin-top: 2rem;
+}
