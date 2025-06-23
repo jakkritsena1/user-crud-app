@@ -1,10 +1,12 @@
 const db_pg = require('./config/db');
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.get('/customers', async (req, res) => {
+app.use(cors());
+app.get('/customers/Name', async (req, res) => {
     try {
         const data = await db_pg.query('SELECT * FROM customers');
         res.json(data.rows);

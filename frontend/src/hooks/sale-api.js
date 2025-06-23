@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = 'dpg-d1cgeq15pdvs73eqvlkg-a.singapore-postgres.render.com';
+const BASE_URL = 'https://user-crud-app-8cr1.onrender.com';
 
 export function getData(Name, LName, Id, Address, Tel) {
     return axios.get(`${BASE_URL}/customers/`, { params: { Name, LName, Id, Address, Tel } });

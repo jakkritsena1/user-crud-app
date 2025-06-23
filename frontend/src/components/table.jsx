@@ -7,9 +7,7 @@ export default function Table() {
 
     useEffect(() => {
         getData()
-            .then(data => {
-                console.log('ข้อมูลที่ได้:', data); 
-                setRows(data)})
+            .then(data => setRows(data))
             .catch(err => console.error('โหลดข้อมูลไม่สำเร็จ', err));
     }, []);
 
