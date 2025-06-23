@@ -2,8 +2,9 @@ import axios from 'axios'
 
 const BASE_URL = 'https://user-crud-app-8cr1.onrender.com';
 
-export function getData(Name, LName, Id, Address, Tel) {
-    return axios.get(`${BASE_URL}/customers/`, { params: { Name, LName, Id, Address, Tel } });
+export async function getData(Name, LName, Id, Address, Tel) {
+    const res = await axios.get(`${BASE_URL}/customers/`, { params: { Name, LName, Id, Address, Tel } });
+    return res.data;
 
 }
 

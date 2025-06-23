@@ -25,14 +25,14 @@ export default function Table() {
                     </tr>
                 </thead>
                 <tbody>
-                    { rows.map((data) => (
-                        <tr className='data'>
+                    { rows.map((item, index) => (
+                        <tr className='data' key={item.id || index}>
                             <td><input type='checkbox' /></td>
-                            <td><input type='text' value={data.id}/></td>
-                            <td><input type='text' value={data.Name} /></td>
-                            <td><input type='text' /></td>
-                            <td><input type='text' /></td>
-                            <td><input type='text' /></td>
+                            <td><input type='text' value={item.id} /></td>
+                            <td><input type='text' value={item.name} /></td>
+                            <td><input type='text' value={item.lastname}/></td>
+                            <td><input type='text' value={item.address}/></td>
+                            <td><input type='text' value={item.telephone}/></td>
                         </tr>
                     ))}
                     <tr className='data'>
