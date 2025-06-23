@@ -1,6 +1,7 @@
 const db_pg = require('./config/db');
 const express = require('express');
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.get('/customers', async (req, res) => {
@@ -12,3 +13,6 @@ app.get('/customers', async (req, res) => {
         res.status(500).json({ error: 'เกิดข้อผิดพลาดในฝั่งเซิร์ฟเวอร์' });
     }
 });    
+pp.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
