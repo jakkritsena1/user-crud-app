@@ -35,22 +35,6 @@ export default function Table() {
                             <td><input type='text' value={item.telephone}/></td>
                         </tr>
                     ))}
-                    <tr className='data'>
-                        <td><input type='checkbox' /></td>
-                        <td><input type='text' /></td>
-                        <td><input type='text' /></td>
-                        <td><input type='text' /></td>
-                        <td><input type='text' /></td>
-                        <td><input type='text' /></td>
-                    </tr>
-                    <tr className='data'>
-                        <td><input type='checkbox' /></td>
-                        <td><input type='text' /></td>
-                        <td><input type='text' /></td>
-                        <td><input type='text' /></td>
-                        <td><input type='text' /></td>
-                        <td><input type='text' /></td>
-                    </tr>
                     <tr className='button'>
                         <td></td>
                         <td></td>
