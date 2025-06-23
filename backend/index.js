@@ -1,4 +1,6 @@
 const db_pg = require('./config/db')
+const app = express();
+
 
 app.get('/customers', async (req, res) => {
     try {
