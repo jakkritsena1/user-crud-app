@@ -1,7 +1,8 @@
-const db_pg = require('./config/db')
+const db_pg = require('./config/db');
+const express = require('express');
 const app = express();
 
-
+app.use(express.json());
 app.get('/customers', async (req, res) => {
     try {
         const data = await db_pg.query('SELECT * FROM customers');
@@ -10,4 +11,4 @@ app.get('/customers', async (req, res) => {
         console.error(err);
         res.status(500).json({ error: 'เกิดข้อผิดพลาดในฝั่งเซิร์ฟเวอร์' });
     }
-});         
+});    
