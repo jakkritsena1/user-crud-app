@@ -13,6 +13,6 @@ app.get('/customers', async (req, res) => {
         res.status(500).json({ error: 'เกิดข้อผิดพลาดในฝั่งเซิร์ฟเวอร์' });
     }
 });    
-pp.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
