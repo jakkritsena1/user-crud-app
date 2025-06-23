@@ -12,7 +12,7 @@ export default function Table() {
     }, []);
 
     return (
-        <div>
+        <div >
             <table className="table-content">
                 <thead>
                     <tr>
