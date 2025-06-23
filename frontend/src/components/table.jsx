@@ -25,11 +25,11 @@ export default function Table() {
                     </tr>
                 </thead>
                 <tbody>
-                    { rows.map((item) => (
-                        <tr className='data' key={item.id}>
+                    { rows.map((data) => (
+                        <tr className='data'>
                             <td><input type='checkbox' /></td>
-                            <td><input type='text' value={item.id}/></td>
-                            <td><input type='text' value={item.Name} /></td>
+                            <td><input type='text' value={data.id}/></td>
+                            <td><input type='text' value={data.Name} /></td>
                             <td><input type='text' /></td>
                             <td><input type='text' /></td>
                             <td><input type='text' /></td>

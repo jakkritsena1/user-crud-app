@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors());
-app.get('/customers/Name', async (req, res) => {
+app.get('/customers/', async (req, res) => {
     try {
         const data = await db_pg.query('SELECT * FROM customers');
         res.json(data.rows);
