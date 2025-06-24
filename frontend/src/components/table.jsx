@@ -4,19 +4,25 @@ import { getData, pushData } from '../hooks/sale-api.js'
 
 export default function Table() {
     const [rows, setRows] = useState([]);
-    const changeData = (index, field, value) => {
-        const newRows = [...rows];
-        newRows[index][field] = value;
-        setRows(newRows);
+
+    const addRow = () => {
+        const newRow = {
+            id: '',
+            name: '',
+            lastname: '',
+            address: '',
+            telephone: ''
+        };
+        setRows([...rows, newRow]); // ใช้ spread operator เพื่อเพิ่มแถวใหม่
     };
     const updateRow = async (e, index) => {
         e.preventDefault();
         try {
-        const row = rows[index];
-        const res = await pushData(row.id, row.name, row.lastname, row.address, row.telephone);
-        console.log('update success', res.status)
+            const row = rows[index];
+            const res = await pushData(row.id, row.name, row.lastname, row.address, row.telephone);
+            console.log('update success', res.status)
         }
-        catch (err){
+        catch (err) {
             console.error('update fail:', err);
         }
     };
@@ -48,7 +54,7 @@ export default function Table() {
                                     <td><input type='text' placeholder='lastname' name='lastname' value={item.lastname} onChange={e => changeData(index, 'lastname', e.target.value)} required /></td>
                                     <td><input type='text' placeholder='address' name='address' value={item.address} onChange={e => changeData(index, 'address', e.target.value)} required /></td>
                                     <td><input type='text' placeholder='telephone' name='telephone' value={item.telephone} onChange={e => changeData(index, 'telephone', e.target.value)} required /></td>
-                                    <td className='btn-submit'><button type='submit' onClick={( e ) => updateRow(e, index)}>submit</button></td>
+                                    <td className='btn-submit'><button type='submit' onClick={(e) => updateRow(e, index)}>submit</button></td>
                                 </tr>
                             ))}
                         </tbody>
