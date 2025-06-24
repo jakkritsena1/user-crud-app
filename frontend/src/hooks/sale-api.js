@@ -8,8 +8,8 @@ async function getData() {
 
 }
 
-async function postData(Name, LName, Id, Address, Tel) {
-    const res = await axios.post(`${BASE_URL}/customers/`, {Name, LName, Id, Address, Tel });
+async function postData(id, name, lastname, address, telephone) {
+    const res = await axios.post(`${BASE_URL}/customers/`, {id, name, lastname, address, telephone });
     return res.status;
 }
 
