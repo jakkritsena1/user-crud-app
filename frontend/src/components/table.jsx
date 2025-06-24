@@ -18,6 +18,13 @@ export default function Table() {
     };
     const addRow = async (e) => {
         e.preventDefault();
+        const newRow = {
+            id: '',
+            name: '',
+            lastname: '',
+            address: '',
+            telephone: ''
+        };
         try {
             setRows([...rows, newRow]);
             setNewRow({ id: '', name: '', lastname: '', address: '', telephone: '' });
