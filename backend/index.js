@@ -31,7 +31,7 @@ app.get('/customers/', async (req, res) => {
         res.status(500).json({ error: 'เกิดข้อผิดพลาดในฝั่งเซิร์ฟเวอร์' });
     }
 });   
-app.patch('/customers/:id', async (req, res) => {
+app.patch('/customers/:Id', async (req, res) => {
     const customersID = parseInt(req.params.id);
     const {name, lastname, address, telephone } = req.body;
     try {
