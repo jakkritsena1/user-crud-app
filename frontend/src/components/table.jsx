@@ -9,9 +9,16 @@ export default function Table() {
         newRows[index][field] = value;
         setRows(newRows);
     };
-    const updateRow = async (index) => {
+    const updateRow = async (e, index) => {
+        e.preventDefault();
+        try {
         const row = rows[index];
         const res = await pushData(row.id, row.name, row.lastname, row.address, row.telephone);
+        console.log('update success', res.status)
+        }
+        catch (err){
+            console.error('update fail:', err);
+        }
     };
     useEffect(() => {
         getData()
