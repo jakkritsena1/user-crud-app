@@ -44,7 +44,7 @@ app.patch('/customers/:id', async (req, res) => {
     }
 });
 app.post('/customers/', async (req, res) => {
-    const { id, name, address, telephone } = req.body;
+    const { id, name, lastname, address, telephone } = req.body;
     try {
         const data = await db_pg.query(`INSERT INTO customers (id, name, lastname, address, telephone) VALUES ($1, $2, $3, $4, $5) RETURNING *`, [id, name, lastname, address, telephone]);
         res.status(201).json({ massage: "เพิ่มข้อมูลสำเร็จ"})
