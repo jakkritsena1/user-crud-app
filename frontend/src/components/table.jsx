@@ -11,7 +11,7 @@ export default function Table() {
     };
     const updateRow = async (index) => {
         const row = rows[index];
-        const res = await pushData(row.id, row.name, row.lastname, row.address, row.telephone);
+        const res = await pushData(row.name, row.lastname, row.address, row.telephone);
     };
     useEffect(() => {
         getData()
