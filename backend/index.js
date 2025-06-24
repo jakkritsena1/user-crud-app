@@ -19,6 +19,7 @@ const PORT = process.env.PORT || 3000;
 //     );
 //     next();
 // })
+
 app.use(express.json());
 app.use(cors());
 app.get('/customers/', async (req, res) => {

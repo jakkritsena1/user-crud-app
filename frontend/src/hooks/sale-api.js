@@ -13,8 +13,8 @@ async function postData(Name, LName, Id, Address, Tel) {
     return res.status;
 }
 
-async function pushData(id, name, lastname, address, telephone) {
-    const res = await axios.patch(`${BASE_URL}/customers/${id}`, { name, lastname, address, telephone });
+async function pushData(name, lastname, address, telephone) {
+    const res = await axios.patch(`${BASE_URL}/customers/${Id}`, { name, lastname, address, telephone });
     return res.status;
 }
 
