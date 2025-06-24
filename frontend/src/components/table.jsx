@@ -18,7 +18,6 @@ export default function Table() {
     };
     const addRow = async (e) => {
         e.preventDefault();
-
         try {
             setRows([...rows, newRow]);
             setNewRow({ id: '', name: '', lastname: '', address: '', telephone: '' });
@@ -61,14 +60,22 @@ export default function Table() {
                     <tbody>
                         {rows.map((item, index) => (
                             <tr className='data' key={item.id}>
-                                <td><input type='text' value={newRow.id} onChange={e => setNewRow({ ...newRow, id: e.target.value })} /></td>
-                                <td><input type='text' placeholder='name' name='name' value={newRow.name} onChange={e => setNewRow({ ...newRow, name: e.target.value })} required /></td>
-                                <td><input type='text' placeholder='lastname' name='lastname' value={newRow.lastname} onChange={e => setNewRow({ ...newRow, lastname: e.target.value })} required /></td>
-                                <td><input type='text' placeholder='address' name='address' value={newRow.address} onChange={e => setNewRow({ ...newRow, address: e.target.value })} required /></td>
-                                <td><input type='text' placeholder='telephone' name='telephone' value={newRow.telephone} onChange={e => setNewRow({ ...newRow, telephone: e.target.value })} required /></td>
-                                <td className='btn-submit'><button type='submit' onClick={(e) => updateRow(e, index)}>Save</button></td>
+                                <td><input type='text' value={item.id} /></td>
+                                <td><input type='text' placeholder='name' name='name' value={item.name} onChange={e => changeData(index, 'name', e.target.value)} required /></td>
+                                <td><input type='text' placeholder='lastname' name='lastname' value={item.lastname} onChange={e => changeData(index, 'lastname', e.target.value)} required /></td>
+                                <td><input type='text' placeholder='address' name='address' value={item.address} onChange={e => changeData(index, 'address', e.target.value)} required /></td>
+                                <td><input type='text' placeholder='telephone' name='telephone' value={item.telephone} onChange={e => changeData(index, 'telephone', e.target.value)} required /></td>
+                                <td className='btn-submit'><button type='submit' onClick={(e) => updateRow(e, index)}>edit</button></td>
                             </tr>
                         ))}
+                        <tr>
+                            <td><input type='text' /></td>
+                            <td><input type='text' placeholder='name' name='name' onChange={e => changeData( 'name', e.target.value)} required /></td>
+                            <td><input type='text' placeholder='lastname' name='lastname' onChange={e => changeData('lastname', e.target.value)} required /></td>
+                            <td><input type='text' placeholder='address' name='address' onChange={e => changeData('address', e.target.value)} required /></td>
+                            <td><input type='text' placeholder='telephone' name='telephone' onChange={e => changeData('telephone', e.target.value)} required /></td>
+                            <td className='btn-submit'><button type='submit' onClick={(e) => addRow(e)}>add rows</button></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
