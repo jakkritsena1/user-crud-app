@@ -25,9 +25,9 @@ export default function Table() {
             address: '',
             telephone: ''
         };
+        setNewRow({ id: '', name: '', lastname: '', address: '', telephone: '' });
         try {
             setRows([...rows, newRow]);
-            setNewRow({ id: '', name: '', lastname: '', address: '', telephone: '' });
             const res = await postData(newRow.id, newRow.name, newRow.lastname, newRow.address, newRow.telephone);
             console.log('push success', res.status)
         } catch (err) {
