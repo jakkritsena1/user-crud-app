@@ -22,7 +22,7 @@ export default function Table() {
     return (
         <>
             <div>
-                <form>
+                <form onSubmit={updateRow}>
                     <table className="table-content">
                         <thead>
                             <tr>
