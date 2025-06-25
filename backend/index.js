@@ -111,6 +111,50 @@ app.delete('/employee/:id', async (req, res) => {
     }
 });
 
+//admin api
+app.get('/user_d/', async (req, res) => {
+    try {
+        const data = await db_pg.query('SELECT * FROM user_d');
+        res.json(data.rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'เกิดข้อผิดพลาดในฝั่งเซิร์ฟเวอร์' });
+    }
+});
+app.patch('/user_d/:id', async (req, res) => {
+    const userID = parseInt(req.params.id);
+    const { name, lastname, address, telephone } = req.body;
+    try {
+        await db_pg.query(`UPDATE user_d SET name = $1, lastname = $2, address = $3, telephone = $4 WHERE id = $5 RETURNING *`, [name, lastname, address, telephone, userID]);
+        res.status(200).json({ message: "อัปเดตสำเร็จ"})
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "เกิดข้อผิดพลาดฝั่ง server" });
+    }
+});
+app.post('/user_d/', async (req, res) => {
+    const { name, lastname, address, telephone } = req.body;
+    try {
+        await db_pg.query(`INSERT INTO user_d (name, lastname, address, telephone) VALUES ($1, $2, $3, $4)`, [name, lastname, address, telephone]);
+        res.status(201).json({ massage: "เพิ่มข้อมูลสำเร็จ" })
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "เกิดข้อผิดพลาดฝั่ง server" });
+    }
+});
+app.delete('/user_d/:id', async (req, res) => {
+    const userID = parseInt(req.params.id);
+    try {
+        const data = await db_pg.query(`DELETE FROM user_d WHERE id = $1 RETURNING *`, [userID]);
+        res.status(200).json({ message: "ลบข้อมูลสำเร็จ"})
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "เกิดข้อผิดพลาดฝั่ง server" });
+    }
+});
+
 app.listen(PORT, () => {
 
 });
