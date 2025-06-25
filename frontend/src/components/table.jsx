@@ -69,13 +69,13 @@ export default function Table() {
                     </thead>
                     <tbody>
                         {rows.map((item, index) => (
-                            <tr className='data'>
+                            <tr className='data' key={item.id}>
                                 <td><input type='text' placeholder='name' name='name' value={item.name} onChange={e => changeData(index, 'name', e.target.value)} required /></td>
                                 <td><input type='text' placeholder='lastname' name='lastname' value={item.lastname} onChange={e => changeData(index, 'lastname', e.target.value)} required /></td>
                                 <td><input type='text' placeholder='address' name='address' value={item.address} onChange={e => changeData(index, 'address', e.target.value)} required /></td>
                                 <td><input type='text' placeholder='telephone' name='telephone' value={item.telephone} onChange={e => changeData(index, 'telephone', e.target.value)} required /></td>
-                                <td className='btn-submit'><button type='submit' onClick={(e) => Update(e,index)}>EDIT</button></td>
-                                <td className='btn-submit'><button type='submit' onClick={(e) => Push(e)}>PUSH</button></td>
+                                <td className='btn-submit'><button type='button' onClick={(e) => Update(e,index)}>EDIT</button></td>
+                                <td className='btn-submit'><button type='button' onClick={(e) => Push(e)}>PUSH</button></td>
                                 <td className='btn-submit'><button type='button' onClick={(e) => Delete(e,index)}>DELETE</button></td>
                             </tr>
                         ))}
