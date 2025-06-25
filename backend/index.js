@@ -125,7 +125,7 @@ app.patch('/user_d/:id', async (req, res) => {
     const userID = parseInt(req.params.id);
     const { name, lastname, user, password } = req.body;
     try {
-        await db_pg.query(`UPDATE user_d SET name = $1, lastname = $2, user = $3, password = $4 WHERE id = $5 RETURNING *`, [name, lastname, user, password, userID]);
+        await db_pg.query(`UPDATE user_d SET name = $1, lastname = $2, "user" = $3, password = $4 WHERE id = $5 RETURNING *`, [name, lastname, user, password, userID]);
         res.status(200).json({ message: "อัปเดตสำเร็จ"})
     }
     catch (err) {
