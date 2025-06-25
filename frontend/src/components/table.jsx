@@ -39,10 +39,11 @@ export default function Table() {
             console.error('update fail:', err);
         }
     };
-    const Delete = async (e) => {
+    const Delete = async (e,index) => {
         e.preventDefault();
         try {
-            const res = await deleteData();
+            const row = rows[index];
+            const res = await deleteData(row.id);
             console.log('delete success', res.status)
         } catch (err) {
             console.error('delete fail', err)
@@ -75,7 +76,7 @@ export default function Table() {
                                 <td><input type='text' placeholder='telephone' name='telephone' value={item.telephone} onChange={e => changeData(index, 'telephone', e.target.value)} required /></td>
                                 <td className='btn-submit'><button type='submit' onClick={(e) => Update(e,index)}>EDIT</button></td>
                                 <td className='btn-submit'><button type='submit' onClick={(e) => Push(e)}>PUSH</button></td>
-                                <td className='btn-submit'><button type='button' onClick={(e) => Delete(e)}>DELETE</button></td>
+                                <td className='btn-submit'><button type='button' onClick={(e) => Delete(e,index)}>DELETE</button></td>
                             </tr>
                         ))}
                         <tr>

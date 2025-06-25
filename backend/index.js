@@ -36,7 +36,7 @@ app.patch('/customers/:id', async (req, res) => {
     const { name, lastname, address, telephone } = req.body;
     try {
         const data = await db_pg.query(`UPDATE customers SET name = $1, lastname = $2, address = $3, telephone = $4 WHERE id = $5 RETURNING *`, [name, lastname, address, telephone, customersID]);
-        res.status(200).json({ message: "อัปเดตสำเร็จ"});
+        res.status(200).json({ message: "อัปเดตสำเร็จ", data: rows[0]});
     }
     catch (err) {
         console.error(err);
@@ -56,7 +56,7 @@ app.post('/customers/', async (req, res) => {
 app.delete('/customers/:id', async (req, res) => {
     const customersID = parseInt(req.params.id);
     try {
-        const data = await db_pg.query('DELETE FROM customers WHERE id = $1', [customersID]);
+        const data = await db_pg.query('DELETE FROM customers WHERE id = $1 RETURNING *', [customersID]);
         res.status(200).json({ message: "ลบข้อมูลสำเร็จ"});
     }
     catch (err) {
