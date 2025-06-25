@@ -10,6 +10,14 @@ export default function Table() {
         address: '',
         telephone: ''
     });
+    const fetchData = () => {
+        getData()
+            .then(data => setRows(data))
+            .catch(err => console.error('โหลดข้อมูลไม่สำเร็จ', err));
+    }
+    useEffect(() => {
+        fetchData();
+    }, []);
     const changeData = (index, field, value) => {
         const newRows = [...rows];
         newRows[index][field] = value;
@@ -23,8 +31,9 @@ export default function Table() {
         e.preventDefault();
         try {
             setNewRow({ name: '', lastname: '', address: '', telephone: '' });
-            const res = await postData( newRow.name, newRow.lastname, newRow.address, newRow.telephone);
+            const res = await postData(newRow.name, newRow.lastname, newRow.address, newRow.telephone);
             console.log('push success', res.status)
+            fetchData();
         } catch (err) {
             console.error('push fail: ', err);
         }
@@ -35,25 +44,22 @@ export default function Table() {
             const row = rows[index];
             const res = await pushData(row.id, row.name, row.lastname, row.address, row.telephone);
             console.log('update success', res.status)
+            fetchData();
         } catch (err) {
             console.error('update fail:', err);
         }
     };
-    const Delete = async (e,index) => {
+    const Delete = async (e, index) => {
         e.preventDefault();
         try {
             const row = rows[index];
             const res = await deleteData(row.id);
             console.log('delete success', res.status)
+            fetchData();
         } catch (err) {
             console.error('delete fail', err)
         }
     }
-    useEffect(() => {
-        getData()
-            .then(data => setRows(data))
-            .catch(err => console.error('โหลดข้อมูลไม่สำเร็จ', err));
-    }, []);
 
     return (
         <>
@@ -74,9 +80,9 @@ export default function Table() {
                                 <td><input type='text' placeholder='lastname' name='lastname' value={item.lastname} onChange={e => changeData(index, 'lastname', e.target.value)} required /></td>
                                 <td><input type='text' placeholder='address' name='address' value={item.address} onChange={e => changeData(index, 'address', e.target.value)} required /></td>
                                 <td><input type='text' placeholder='telephone' name='telephone' value={item.telephone} onChange={e => changeData(index, 'telephone', e.target.value)} required /></td>
-                                <td className='btn-submit'><button type='button' onClick={(e) => Update(e,index)}>EDIT</button></td>
+                                <td className='btn-submit'><button type='button' onClick={(e) => Update(e, index)}>EDIT</button></td>
                                 <td className='btn-submit'><button type='button' onClick={(e) => Push(e)}>PUSH</button></td>
-                                <td className='btn-submit'><button type='button' onClick={(e) => Delete(e,index)}>DELETE</button></td>
+                                <td className='btn-submit'><button type='button' onClick={(e) => Delete(e, index)}>DELETE</button></td>
                             </tr>
                         ))}
                         <tr>
