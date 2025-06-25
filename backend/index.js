@@ -57,7 +57,7 @@ app.delete('/customers/:id', async (req, res) => {
     const customersID = parseInt(req.params.id);
     try {
         const data = await db_pg.query(`DELETE FROM customers WHERE id = $1 RETURNING *`, [customersID]);
-        res.status(200).json({ message: "ลบข้อมูลสำเร็จ", data: rows[0] })
+        res.status(200).json({ message: "ลบข้อมูลสำเร็จ"})
     }
     catch (err) {
         console.error(err);
