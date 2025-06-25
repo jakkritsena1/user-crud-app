@@ -8,13 +8,13 @@ async function getData() {
 
 }
 
-async function postData(name, lastname, address, telephone) {
-    const res = await axios.post(`${BASE_URL}/user_d/`, {name, lastname, address, telephone });
+async function postData(name, lastname, user, password) {
+    const res = await axios.post(`${BASE_URL}/user_d/`, {name, lastname, user, password });
     return res.status;
 }
 
-async function pushData(id, name, lastname, address, telephone) {
-    const res = await axios.patch(`${BASE_URL}/user_d/${id}`, { name, lastname, address, telephone });
+async function pushData(id, name, lastname, user, password) {
+    const res = await axios.patch(`${BASE_URL}/user_d/${id}`, { name, lastname, user, password });
     return res.status;
 }
 
