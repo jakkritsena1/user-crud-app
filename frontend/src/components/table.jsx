@@ -56,12 +56,11 @@ export default function Table() {
                             <th>data2</th>
                             <th>data3</th>
                             <th>data4</th>
-                            <th>data5</th>
                         </tr>
                     </thead>
                     <tbody>
                         {rows.map((item, index) => (
-                            <tr className='data' key={item.id}>
+                            <tr className='data'>
                                 <td><input type='text' placeholder='name' name='name' value={item.name} onChange={e => changeData(index, 'name', e.target.value)} required /></td>
                                 <td><input type='text' placeholder='lastname' name='lastname' value={item.lastname} onChange={e => changeData(index, 'lastname', e.target.value)} required /></td>
                                 <td><input type='text' placeholder='address' name='address' value={item.address} onChange={e => changeData(index, 'address', e.target.value)} required /></td>
