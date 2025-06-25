@@ -19,7 +19,7 @@ async function pushData(id, name, lastname, address, telephone) {
 }
 
 async function deleteData(id) {
-    const res = await axios.delete(`${BASE_URL}/customer/${id}`);
+    const res = await axios.delete(`${BASE_URL}/customers/${id}`);
     return res.status;
 }
 
