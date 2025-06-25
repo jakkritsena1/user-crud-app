@@ -5,7 +5,6 @@ import { getData, pushData, postData } from '../hooks/sale-api.js'
 export default function Table() {
     const [rows, setRows] = useState([]);
     const [newRow, setNewRow] = useState({
-        id: '',
         name: '',
         lastname: '',
         address: '',
@@ -34,7 +33,7 @@ export default function Table() {
         e.preventDefault();
         try {
             const row = rows[index];
-            const res = await pushData(row.id, row.name, row.lastname, row.address, row.telephone);
+            const res = await pushData(row.name, row.lastname, row.address, row.telephone);
             console.log('update success', res.status)
         }
         catch (err) {
@@ -63,7 +62,6 @@ export default function Table() {
                     <tbody>
                         {rows.map((item, index) => (
                             <tr className='data' key={item.id}>
-                                <td><input type='text' value={item.id} /></td>
                                 <td><input type='text' placeholder='name' name='name' value={item.name} onChange={e => changeData(index, 'name', e.target.value)} required /></td>
                                 <td><input type='text' placeholder='lastname' name='lastname' value={item.lastname} onChange={e => changeData(index, 'lastname', e.target.value)} required /></td>
                                 <td><input type='text' placeholder='address' name='address' value={item.address} onChange={e => changeData(index, 'address', e.target.value)} required /></td>
@@ -73,11 +71,6 @@ export default function Table() {
                             </tr>
                         ))}
                         <tr>
-                            {/* <td><input type='text' /></td>
-                            <td><input type='text' placeholder='name' name='name' onChange={e => changeData( 'name', e.target.value)} required /></td>
-                            <td><input type='text' placeholder='lastname' name='lastname' onChange={e => changeData('lastname', e.target.value)} required /></td>
-                            <td><input type='text' placeholder='address' name='address' onChange={e => changeData('address', e.target.value)} required /></td>
-                            <td><input type='text' placeholder='telephone' name='telephone' onChange={e => changeData('telephone', e.target.value)} required /></td>  */}
                             <td></td>
                             <td></td>
                             <td></td>
