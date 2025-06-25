@@ -123,9 +123,9 @@ app.get('/user_d/', async (req, res) => {
 });
 app.patch('/user_d/:id', async (req, res) => {
     const userID = parseInt(req.params.id);
-    const { name, lastname, address, telephone } = req.body;
+    const { name, lastname, user, password } = req.body;
     try {
-        await db_pg.query(`UPDATE user_d SET name = $1, lastname = $2, address = $3, telephone = $4 WHERE id = $5 RETURNING *`, [name, lastname, address, telephone, userID]);
+        await db_pg.query(`UPDATE user_d SET name = $1, lastname = $2, user = $3, password = $4 WHERE id = $5 RETURNING *`, [name, lastname, user, password, userID]);
         res.status(200).json({ message: "อัปเดตสำเร็จ"})
     }
     catch (err) {
@@ -134,9 +134,9 @@ app.patch('/user_d/:id', async (req, res) => {
     }
 });
 app.post('/user_d/', async (req, res) => {
-    const { name, lastname, address, telephone } = req.body;
+    const { name, lastname, user, password } = req.body;
     try {
-        await db_pg.query(`INSERT INTO user_d (name, lastname, address, telephone) VALUES ($1, $2, $3, $4)`, [name, lastname, address, telephone]);
+        await db_pg.query(`INSERT INTO user_d (name, lastname, user, password) VALUES ($1, $2, $3, $4)`, [name, lastname, user, password]);
         res.status(201).json({ massage: "เพิ่มข้อมูลสำเร็จ" })
     } catch (err) {
         console.error(err);
