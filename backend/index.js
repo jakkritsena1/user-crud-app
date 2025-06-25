@@ -35,8 +35,8 @@ app.patch('/customers/:id', async (req, res) => {
     const customersID = parseInt(req.params.id);
     const { name, lastname, address, telephone } = req.body;
     try {
-        const data = await db_pg.query(`UPDATE customers SET name = $1, lastname = $2, address = $3, telephone = $4 WHERE id = $5 RETURNING *`, [name, lastname, address, telephone, customersID]);
-        res.status(200).json({ message: "อัปเดตสำเร็จ", data: data.rows[0] })
+        await db_pg.query(`UPDATE customers SET name = $1, lastname = $2, address = $3, telephone = $4 WHERE id = $5 RETURNING *`, [name, lastname, address, telephone, customersID]);
+        res.status(200).json({ message: "อัปเดตสำเร็จ"})
     }
     catch (err) {
         console.error(err);
@@ -46,7 +46,7 @@ app.patch('/customers/:id', async (req, res) => {
 app.post('/customers/', async (req, res) => {
     const { name, lastname, address, telephone } = req.body;
     try {
-        const data = await db_pg.query(`INSERT INTO customers (name, lastname, address, telephone) VALUES ($1, $2, $3, $4)`, [name, lastname, address, telephone]);
+        await db_pg.query(`INSERT INTO customers (name, lastname, address, telephone) VALUES ($1, $2, $3, $4)`, [name, lastname, address, telephone]);
         res.status(201).json({ massage: "เพิ่มข้อมูลสำเร็จ" })
     } catch (err) {
         console.error(err);
