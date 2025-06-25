@@ -18,8 +18,8 @@ async function pushData(id, name, lastname, address, telephone) {
     return res.status;
 }
 
-async function deleteData(Id) {
-    const res = await axios.delete(`${BASE_URL}/${Id}`);
+async function deleteData(id) {
+    const res = await axios.delete(`${BASE_URL}/customer/${id}`,);
     return res.status;
 }
 

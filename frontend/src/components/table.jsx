@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../assets/css/table.css';
-import { getData, pushData, postData } from '../hooks/sale-api.js'
+import { getData, pushData, postData, deleteData } from '../hooks/sale-api.js'
 
 export default function Table() {
     const [rows, setRows] = useState([]);
@@ -19,7 +19,7 @@ export default function Table() {
         e.preventDefault();
         setRows([...rows, newRow]);
     }
-    const pushData = async (e) => {
+    const Push = async (e) => {
         e.preventDefault();
         try {
             setNewRow({ name: '', lastname: '', address: '', telephone: '' });
@@ -29,17 +29,25 @@ export default function Table() {
             console.error('push fail: ', err);
         }
     };
-    const updateRow = async (e, index) => {
+    const Update = async (e, index) => {
         e.preventDefault();
         try {
             const row = rows[index];
             const res = await pushData(row.name, row.lastname, row.address, row.telephone);
             console.log('update success', res.status)
-        }
-        catch (err) {
+        } catch (err) {
             console.error('update fail:', err);
         }
     };
+    const Delete = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await deleteData();
+            console.log('delete success', res.status)
+        } catch (err) {
+            console.error('delete fail', err)
+        }
+    }
     useEffect(() => {
         getData()
             .then(data => setRows(data))
@@ -65,9 +73,9 @@ export default function Table() {
                                 <td><input type='text' placeholder='lastname' name='lastname' value={item.lastname} onChange={e => changeData(index, 'lastname', e.target.value)} required /></td>
                                 <td><input type='text' placeholder='address' name='address' value={item.address} onChange={e => changeData(index, 'address', e.target.value)} required /></td>
                                 <td><input type='text' placeholder='telephone' name='telephone' value={item.telephone} onChange={e => changeData(index, 'telephone', e.target.value)} required /></td>
-                                <td className='btn-submit'><button type='submit' onClick={(e) => updateRow(e, index)}>EDIT</button></td>
-                                <td className='btn-submit'><button type='submit' onClick={(e) => pushData(e)}>PUSH</button></td>
-                                <td className='btn-submit'><button type='submit' onClick={(e) => pushData(e)}>DELETE</button></td>
+                                <td className='btn-submit'><button type='submit' onClick={(e) => Update(e,index)}>EDIT</button></td>
+                                <td className='btn-submit'><button type='submit' onClick={(e) => Push(e)}>PUSH</button></td>
+                                <td className='btn-submit'><button type='button' onClick={(e) => Delete(e)}>DELETE</button></td>
                             </tr>
                         ))}
                         <tr>
