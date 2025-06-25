@@ -73,8 +73,6 @@ export default function Table() {
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
                             <td className='btn-addRow'><button type='submit' onClick={(e) => addRow(e)}>add rows</button></td>
                         </tr>
                     </tbody>
