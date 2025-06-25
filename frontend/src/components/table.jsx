@@ -16,12 +16,15 @@ export default function Table() {
         newRows[index][field] = value;
         setRows(newRows);
     };
-    const addRow = async (e) => {
+    const addRow = (e) => {
+        e.preventDefault();
+        setRows([...rows, newRow]);
+    }
+    const pushData = async (e) => {
         e.preventDefault();
         try {
-            setRows([...rows, newRow]);
-            setNewRow({ id: '', name: '', lastname: '', address: '', telephone: '' });
-            const res = await postData(newRow.id, newRow.name, newRow.lastname, newRow.address, newRow.telephone);
+            setNewRow({ name: '', lastname: '', address: '', telephone: '' });
+            const res = await postData( newRow.name, newRow.lastname, newRow.address, newRow.telephone);
             console.log('push success', res.status)
         } catch (err) {
             console.error('push fail: ', err);
@@ -66,15 +69,21 @@ export default function Table() {
                                 <td><input type='text' placeholder='address' name='address' value={item.address} onChange={e => changeData(index, 'address', e.target.value)} required /></td>
                                 <td><input type='text' placeholder='telephone' name='telephone' value={item.telephone} onChange={e => changeData(index, 'telephone', e.target.value)} required /></td>
                                 <td className='btn-submit'><button type='submit' onClick={(e) => updateRow(e, index)}>edit</button></td>
+                                <td className='btn-submit'><button type='submit' onClick={(e) => pushData(e)}>push data</button></td>
                             </tr>
                         ))}
                         <tr>
-                            <td><input type='text' /></td>
+                            {/* <td><input type='text' /></td>
                             <td><input type='text' placeholder='name' name='name' onChange={e => changeData( 'name', e.target.value)} required /></td>
                             <td><input type='text' placeholder='lastname' name='lastname' onChange={e => changeData('lastname', e.target.value)} required /></td>
                             <td><input type='text' placeholder='address' name='address' onChange={e => changeData('address', e.target.value)} required /></td>
-                            <td><input type='text' placeholder='telephone' name='telephone' onChange={e => changeData('telephone', e.target.value)} required /></td>
-                            <td className='btn-submit'><button type='submit' onClick={(e) => addRow(e)}>add rows</button></td>
+                            <td><input type='text' placeholder='telephone' name='telephone' onChange={e => changeData('telephone', e.target.value)} required /></td>  */}
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td className='btn-addRow'><button type='submit' onClick={(e) => addRow(e)}>add rows</button></td>
                         </tr>
                     </tbody>
                 </table>
