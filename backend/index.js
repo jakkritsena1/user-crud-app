@@ -136,7 +136,7 @@ app.patch('/user_d/:id', async (req, res) => {
 app.post('/user_d/', async (req, res) => {
     const { name, lastname, user, password } = req.body;
     try {
-        await db_pg.query(`INSERT INTO user_d (name, lastname, user, password) VALUES ($1, $2, $3, $4)`, [name, lastname, user, password]);
+        await db_pg.query(`INSERT INTO user_d (name, lastname, "user", password) VALUES ($1, $2, $3, $4)`, [name, lastname, user, password]);
         res.status(201).json({ massage: "เพิ่มข้อมูลสำเร็จ" })
     } catch (err) {
         console.error(err);
