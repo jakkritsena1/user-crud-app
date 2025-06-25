@@ -38,6 +38,13 @@ a {
     font-family: 'Arial', sans-serif;
 }
 
+a:hover {
+    color: rgb(154, 255, 107);
+    font-style: normal;
+    text-decoration: none;
+    font-family: 'Arial', sans-serif;
+}
+
 @media (max-width: 1024px) {}
 
 @media (max-width: 768px) {}
