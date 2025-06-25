@@ -9,7 +9,6 @@ export default function Header() {
                         <a href="/" className="logo"><img src="" alt="logo"></img></a>
                     </div>
                     <ul className="ui-item">
-                        <li><a >Name</a></li>
                         <li><a >Role</a></li>
                     </ul>
                 </div>
